@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import IconButton from '@material-ui/core/IconButton';
-import { withStyles } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
+import withStyles from '@material-ui/styles/withStyles';
 import PropTypes from 'prop-types';
 import React from 'react';
 /* eslint-enable no-unused-vars */
@@ -51,6 +51,7 @@ function MTablePagination(props) {
                 onClick={handleFirstPageButtonClick}
                 disabled={page === 0}
                 aria-label={localization.firstAriaLabel}
+                size="large"
               >
                 {theme.direction === 'rtl' ? (
                   <props.icons.LastPage />
@@ -67,6 +68,7 @@ function MTablePagination(props) {
               onClick={handleBackButtonClick}
               disabled={page === 0}
               aria-label={localization.previousAriaLabel}
+              size="large"
             >
               {theme.direction === 'rtl' ? (
                 <props.icons.NextPage />
@@ -102,6 +104,7 @@ function MTablePagination(props) {
               onClick={handleNextButtonClick}
               disabled={page >= Math.ceil(count / rowsPerPage) - 1}
               aria-label={localization.nextAriaLabel}
+              size="large"
             >
               {theme.direction === 'rtl' ? (
                 <props.icons.PreviousPage />
@@ -118,6 +121,7 @@ function MTablePagination(props) {
                 onClick={handleLastPageButtonClick}
                 disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                 aria-label={localization.lastAriaLabel}
+                size="large"
               >
                 {theme.direction === 'rtl' ? (
                   <props.icons.FirstPage />

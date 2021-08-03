@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import IconButton from '@material-ui/core/IconButton';
-import { withStyles } from '@material-ui/core';
-import Tooltip from '@material-ui/core/Tooltip';
-import Hidden from '@material-ui/core/Hidden';
 import Button from '@material-ui/core/Button';
+import Hidden from '@material-ui/core/Hidden';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+import withStyles from '@material-ui/styles/withStyles';
 import PropTypes from 'prop-types';
 import React from 'react';
 /* eslint-enable no-unused-vars */
@@ -88,6 +88,7 @@ function MTablePaginationInner(props) {
                 onClick={handleFirstPageButtonClick}
                 disabled={page === 0}
                 aria-label={localization.firstAriaLabel}
+                size="large"
               >
                 {theme.direction === 'rtl' ? (
                   <props.icons.LastPage />
@@ -104,18 +105,20 @@ function MTablePaginationInner(props) {
               onClick={handleBackButtonClick}
               disabled={page === 0}
               aria-label={localization.previousAriaLabel}
+              size="large"
             >
               <props.icons.PreviousPage />
             </IconButton>
           </span>
         </Tooltip>
-        <Hidden smDown={true}>{renderPagesButton(pageStart, pageEnd)}</Hidden>
+        <Hidden mdDown={true}>{renderPagesButton(pageStart, pageEnd)}</Hidden>
         <Tooltip title={localization.nextTooltip}>
           <span>
             <IconButton
               onClick={handleNextButtonClick}
               disabled={page >= maxPages}
               aria-label={localization.nextAriaLabel}
+              size="large"
             >
               <props.icons.NextPage />
             </IconButton>
@@ -128,6 +131,7 @@ function MTablePaginationInner(props) {
                 onClick={handleLastPageButtonClick}
                 disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                 aria-label={localization.lastAriaLabel}
+                size="large"
               >
                 {theme.direction === 'rtl' ? (
                   <props.icons.FirstPage />

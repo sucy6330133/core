@@ -1,17 +1,39 @@
 /* eslint-disable no-unused-vars */
+import LinearProgress from '@material-ui/core/LinearProgress';
+import { styled } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableFooter from '@material-ui/core/TableFooter';
 import TableRow from '@material-ui/core/TableRow';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import DoubleScrollbar from 'react-double-scrollbar';
-import * as React from 'react';
-import { MTablePagination, MTableSteppedPagination } from './components';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import DataManager from './utils/data-manager';
 import { debounce } from 'debounce';
 import equal from 'fast-deep-equal/react';
-import { withStyles } from '@material-ui/core';
+import * as React from 'react';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import DoubleScrollbar from 'react-double-scrollbar';
+import { MTablePagination, MTableSteppedPagination } from './components';
 import * as CommonValues from './utils/common-values';
+import DataManager from './utils/data-manager';
+
+const PREFIX = 'material-table';
+
+const classes = {
+  horizontalScrollContainer: `${PREFIX}-horizontalScrollContainer`
+};
+
+const Root = styled('div')(() => ({
+  [`& .${classes.horizontalScrollContainer}`]: {
+    '& ::-webkit-scrollbar': {
+      '-webkit-appearance': 'none'
+    },
+    '& ::-webkit-scrollbar:horizontal': {
+      height: 8
+    },
+    '& ::-webkit-scrollbar-thumb': {
+      borderRadius: 4,
+      border: '2px solid white',
+      backgroundColor: 'rgba(0, 0, 0, .3)'
+    }
+  }
+}));
 
 /* eslint-enable no-unused-vars */
 
@@ -798,7 +820,7 @@ export default class MaterialTable extends React.Component {
                   selectRoot: props.classes.paginationSelectRoot
                 }}
                 style={{
-                  float: props.theme.direction === 'rtl' ? '' : 'right',
+                  float: props.direction === 'rtl' ? '' : 'right',
                   overflowX: 'auto'
                 }}
                 colSpan={3}
@@ -810,9 +832,9 @@ export default class MaterialTable extends React.Component {
                 rowsPerPageOptions={props.options.pageSizeOptions}
                 SelectProps={{
                   renderValue: (value) => (
-                    <div style={{ padding: '0px 5px' }}>
+                    <Root style={{ padding: '0px 5px' }}>
                       {value + ' ' + localization.labelRowsSelect + ' '}
-                    </div>
+                    </Root>
                   )
                 }}
                 page={this.isRemoteData() ? this.state.query.page : currentPage}
@@ -1223,23 +1245,7 @@ export default class MaterialTable extends React.Component {
   }
 }
 
-const style = () => ({
-  horizontalScrollContainer: {
-    '& ::-webkit-scrollbar': {
-      '-webkit-appearance': 'none'
-    },
-    '& ::-webkit-scrollbar:horizontal': {
-      height: 8
-    },
-    '& ::-webkit-scrollbar-thumb': {
-      borderRadius: 4,
-      border: '2px solid white',
-      backgroundColor: 'rgba(0, 0, 0, .3)'
-    }
-  }
-});
-
-const ScrollBar = withStyles(style)(({ double, children, classes }) => {
+const ScrollBar = ({ double, children }) => {
   if (double) {
     return <DoubleScrollbar>{children}</DoubleScrollbar>;
   } else {
@@ -1252,7 +1258,7 @@ const ScrollBar = withStyles(style)(({ double, children, classes }) => {
       </div>
     );
   }
-});
+};
 
 function functionlessColumns(columns) {
   return columns.map((col) =>

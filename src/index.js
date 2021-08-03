@@ -1,9 +1,9 @@
-import './utils/polyfill';
+import withStyles from '@material-ui/styles/withStyles';
 import React from 'react';
 import { defaultProps } from './defaults';
-import { propTypes } from './prop-types';
 import MaterialTable from './material-table';
-import { withStyles } from '@material-ui/core';
+import { propTypes } from './prop-types';
+import './utils/polyfill';
 
 MaterialTable.defaultProps = defaultProps;
 MaterialTable.propTypes = propTypes;
@@ -38,8 +38,8 @@ export {
   MTableEditField,
   MTableEditRow,
   MTableFilterRow,
-  MTableGroupRow,
   MTableGroupbar,
+  MTableGroupRow,
   MTableHeader,
   MTablePagination,
   MTableSteppedPagination,

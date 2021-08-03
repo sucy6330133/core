@@ -1,12 +1,10 @@
-import React from 'react';
 import DateFnsUtils from '@date-io/date-fns';
+import DatePicker from '@material-ui/lab/DatePicker';
+import DateTimePicker from '@material-ui/lab/DateTimePicker';
+import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
+import TimePicker from '@material-ui/lab/TimePicker';
+import React from 'react';
 import { getLocalizedFilterPlaceHolder } from './utils';
-import {
-  DatePicker,
-  DateTimePicker,
-  MuiPickersUtilsProvider,
-  TimePicker
-} from '@material-ui/pickers';
 
 function DateFilter({
   columnDef,
@@ -34,12 +32,12 @@ function DateFilter({
   }
 
   return (
-    <MuiPickersUtilsProvider
+    <LocalizationProvider
       utils={DateFnsUtils}
       locale={localization.dateTimePickerLocalization}
     >
       {dateInputElement}
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   );
 }
 

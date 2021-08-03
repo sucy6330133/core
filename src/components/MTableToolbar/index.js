@@ -1,13 +1,14 @@
+import { lighten } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
-import { lighten, withStyles } from '@material-ui/core';
+import withStyles from '@material-ui/styles/withStyles';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -89,6 +90,7 @@ export function MTableToolbar(props) {
                   disabled={!state.searchText}
                   onClick={() => onSearchChange('')}
                   aria-label={localization.clearSearchAriaLabel}
+                  size="large"
                 >
                   <props.icons.ResetSearch
                     fontSize="small"
@@ -130,6 +132,7 @@ export function MTableToolbar(props) {
                   })
                 }
                 aria-label={localization.showColumnsAriaLabel}
+                size="large"
               >
                 <props.icons.ViewColumn />
               </IconButton>
@@ -203,6 +206,7 @@ export function MTableToolbar(props) {
                   })
                 }
                 aria-label={localization.exportAriaLabel}
+                size="large"
               >
                 <props.icons.Export />
               </IconButton>
@@ -399,7 +403,7 @@ export const styles = (theme) => ({
     paddingLeft: theme.spacing(2)
   },
   highlight:
-    theme.palette.type === 'light'
+    theme.palette.mode === 'light'
       ? {
           color: theme.palette.secondary.main,
           backgroundColor: lighten(theme.palette.secondary.light, 0.85)

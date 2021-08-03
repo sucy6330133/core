@@ -1,6 +1,6 @@
+import IconButton from '@material-ui/core/IconButton';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -146,6 +146,7 @@ function MTableGroupRow(props) {
                 onClick={(event) => {
                   props.onGroupExpandChanged(props.path);
                 }}
+                size="large"
               >
                 <props.icons.DetailPanel />
               </IconButton>

@@ -11,9 +11,10 @@
  *
  */
 
-import React, { useState, useEffect } from 'react';
+import { CircularProgress, TableCell } from '@material-ui/core';
+import withTheme from '@material-ui/styles/withTheme';
 import PropTypes from 'prop-types';
-import { TableCell, CircularProgress, withTheme } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
 
 function MTableEditCell(props) {
   const [state, setState] = useState(() => ({

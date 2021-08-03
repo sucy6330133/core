@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import TableCell from '@material-ui/core/TableCell';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { withTheme } from '@material-ui/core';
+import TableCell from '@material-ui/core/TableCell';
+import withTheme from '@material-ui/styles/withTheme';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { validateInput } from '../utils/validate';
 class MTableEditCell extends React.Component {
   constructor(props) {
